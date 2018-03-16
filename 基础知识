@@ -1,0 +1,45 @@
+链接：http://waitrobot.com/2017/02/03/gazebo%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%80%EF%BC%89-gazebo%E7%9A%84%E7%BB%84%E6%88%90/
+Gazebo的仿真由下面这些文件构成。
+
+1、world 文件
+
+world文件包含了所有的仿真需要用到的元件，包括机器人、灯光、传感器以及静态物体。这个文件用的SDF格式，后缀一般是.world。
+
+Gazebo server（gzserver）读取这个文件来建立一个仿真的环境。
+
+Gazebo自带了很多仿真的world文件，位置在<install_path>/share/gazebo-<version>/worlds目录下。
+
+2、model 文件
+
+model文件使用的是SDF格式，但是model文件只能包含一个model的tag（<model>…</model>)。这样的好处是可以减少model调用的复杂度，简化world文件。使用下面的语句可以在world中调用model。
+
+<include>
+  <uri>model://model_file_name</uri>
+</include>
+
+
+3、环境变量
+
+Gazebo使用了很多环境变量来确定文件的位置，并用来建立server和client的连接。一般来说，默认的环境变量就足够了，我们不需要重新设置。
+
+下面是这些环境变量的值：
+
+GAZEBO_MODEL_PATH：gazebo的model位置
+
+GAZEBO_RESOURCE_PATH：gazebo的其他资源位置，包括world文件和media文件等。
+
+GAZEBO_MASTER_URI：Gazebo master的URI，这个标识了server的IP和端口并且告诉client去哪里连接。
+
+GAZEBO_PLUGIN_PATH：plugin库的位置。
+
+GAZEBO_MODEL_DATABASE_URI：Gazebo的在线model库的链接。
+
+这些环境变量包含在shell的脚本中。
+
+source <install_path>/share/gazebo/setup.sh
+
+model文件包含的只是一个model，而world可以包含多个model。只能有一个<model>...</model>标签
+world文件最后结尾为.world格式，
+两者使用的都是 SDF (Simulation Description Format), 格式的内容形式。
+
+
