@@ -1,0 +1,42 @@
+对于model文件必须包含两个东西，一个是model.config和model.sdf
+3.2 model config
+
+每个model都必须包含一个model.config文件，这个文件包含model的原始数据，格式如下。
+
+<?xml version="1.0"?>
+
+<model>
+  <name>My Model Name</name>
+  <version>1.0</version>
+  <sdf version='1.5'>model.sdf</sdf>
+
+  <author>
+    <name>My name</name>
+    <email>name@email.address</email>
+  </author>
+
+  <description>
+    A description of the model
+  </description>
+</model>
+<name> model的名称
+
+<version> 版本号
+
+<sdf> 描述这个model的sdf或者urdf文件
+
+<author> model创建者的名字
+
+<description> model的描述
+
+<depend> 所有该model使用的依赖，一般是指其他models
+
+<model> 依赖的model
+
+<uri> 依赖model的路径
+
+<version>model的版本
+
+3.3 Model SDF
+
+每个model需要一个model.sdf文件，这个文件包含了所有的仿真描述文件，后面的教程中会详细描述。
